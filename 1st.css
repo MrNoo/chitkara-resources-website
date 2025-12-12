@@ -1,0 +1,220 @@
+:root {
+    --accent: #F8961E; /* Your Orange */
+    --bg: #000000;     /* Pure Black */
+    --text-main: #f5f5f7;
+    --text-muted: #86868b;
+    --font: 'Inter', sans-serif;
+}
+body{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: black;
+    color: lightgray;
+    min-height: 100vh;
+    line-height: 1.5;
+    background-color: var(--bg);
+    font-family: var(--font);
+    color: var(--text-main);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased; /* Crucial for Apple crispness */
+}
+
+/* Image gradient background */
+.gradient1{
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0.5;
+    z-index: -1;
+}
+.gradientblur1{
+    height: 0;
+    width: 20rem;
+    position: absolute;
+    top: 20%;
+    right: 0;
+    box-shadow: 0 0 700px 15px whitesmoke;
+}
+
+.gradient2{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    opacity: 0.5;
+    z-index: -1;
+}
+.gradientblur2{
+    height: 0;
+    width: 20rem;
+    position: absolute;
+    bottom: 20%;
+    left: 0;
+    box-shadow: 0 0 700px 15px whitesmoke;
+}
+
+/* NAV BAR  */
+.container{
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    transform: translateY(-3em);
+    color: #B4B4B4;
+    animation: navanim 1s ease-in-out 100ms forwards;
+}
+.container a{
+    padding: 0.5em;
+    margin: 0.5em;
+    text-decoration: none;
+    color: #B4B4B4;
+}
+
+/* BUTTON INSIDE NAV BAR */
+.btn-signin {
+  background-color: #000000;
+  border-radius: 100px;
+box-shadow: rgba(248, 150, 30, 0.2) 0 -25px 18px -14px inset,
+            rgba(248, 150, 30, 0.15) 0 1px 2px,
+            rgba(248, 150, 30, 0.15) 0 2px 4px,
+            rgba(248, 150, 30, 0.15) 0 4px 8px,
+            rgba(248, 150, 30, 0.15) 0 8px 16px,
+            rgba(248, 150, 30, 0.15) 0 16px 32px;  color: rgb(255, 255, 255);
+  cursor: pointer;
+  display: inline-block;
+  font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+  padding: 2px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  font-size: 12px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+.container .logo{
+    height: 30px;
+}
+
+.btn-signin:hover {
+  transform: scale(1.05) rotate(-1deg);
+}
+@keyframes navanim {
+    from{transform: translateY(-100px);}
+    to{transform: translateY(0px);}
+}
+
+/* <!-- FIRST THING OR HEADER --> */
+
+
+/* --- HERO SECTION --- */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 60px; /* Account for navbar */
+}
+
+/* Content Width */
+.hero-container {
+    max-width: 800px;
+    padding: 0 24px;
+}
+
+/* 1. Badge (Small top text) */
+.badge {
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 10;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+/* 2. Headline (Massive) */
+h1 {
+    font-size: 56px; /* Big Desktop Size */
+    line-height: 1.08;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
+}
+
+/* Text Gradient Effect (Silver to White) */
+.text-gradient {
+    background: linear-gradient(145deg, #ffffff 40%, #8b8b8b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* 3. Subtext */
+.subtext {
+    font-size: 21px;
+    line-height: 1.4;
+    font-weight: 400;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+}
+
+/* 4. Buttons */
+.action-area {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Primary Button (The Orange Pill) */
+.btn-primary {
+    background-color: var(--accent);
+    color: #000; /* Black text for contrast */
+    padding: 12px 26px;
+    border-radius: 980px;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 500;
+    transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.btn-primary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(248, 150, 30, 0.4); /* Glow on hover */
+}
+
+/* Link Button (Secondary) */
+.btn-link {
+    color: var(--accent);
+    font-size: 17px;
+    text-decoration: none;
+    font-weight: 400;
+}
+.btn-link:hover { text-decoration: underline; }
+
+/* ANIMATIONS (Slide Up) */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s cubic-bezier(0, 0.55, 0.45, 1) forwards;
+}
+
+@keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+
+/* Mobile Tweaks */
+@media (max-width: 734px) {
+    h1 { font-size: 40px; }
+    .subtext { font-size: 19px; }
+}
+
+
+
+

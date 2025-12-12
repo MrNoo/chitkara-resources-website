@@ -1,0 +1,216 @@
+/* --- 1. RESET & VARIABLES --- */
+:root {
+    --font-main: 'Inter', sans-serif;
+    --accent: #F8961E; 
+    --bg-deep: #050505;
+    --text-white: #FFFFFF;
+    
+    /* GLASS SETTINGS */
+    --glass-bg: rgba(20, 20, 20, 0.4); /* Low opacity for transparency */
+    --glass-blur: 24px;
+    --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background-color: var(--bg-deep);
+    color: var(--text-white);
+    font-family: var(--font-main);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* --- 2. BACKGROUND --- */
+.ambient-light {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1; pointer-events: none;
+}
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+}
+.orb-1 { width: 500px; height: 500px; background: var(--accent); top: -100px; left: -100px; }
+.orb-2 { width: 400px; height: 400px; background: #4F46E5; bottom: -50px; right: -50px; }
+
+
+/* --- 3. LAYOUT --- */
+.container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+.nav-bar { display: flex; justify-content: space-between; padding: 20px 0; margin-bottom: 40px; }
+.brand { font-weight: 700; font-size: 1.2rem; display: flex; align-items: center; gap: 10px; }
+.brand-mark { width: 10px; height: 10px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent); }
+.hero { text-align: center; margin-bottom: 50px; }
+.hero h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 10px; }
+.hero-accent { color: var(--accent); }
+.hero p { color: #888; }
+
+/* --- 4. THE CARD (TRIGGER) --- */
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+
+.card {
+    height: 300px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: var(--glass-border);
+    border-radius: 24px;
+    display: flex; flex-direction: column;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    position: relative; overflow: hidden;
+}
+.card:hover { transform: scale(1.02); }
+
+.card-visual {
+    flex: 1;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(to bottom right, rgba(255,255,255,0.05), transparent);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.card-badge {
+    position: absolute; top: 15px; left: 15px;
+    background: rgba(0,0,0,0.5); padding: 5px 10px;
+    border-radius: 8px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+}
+.card-info { padding: 20px; }
+.card-title { font-size: 1.2rem; margin-bottom: 5px; }
+.card-meta { color: #888; font-size: 0.9rem; display: flex; justify-content: space-between; }
+.zero-op {opacity: 60%;}
+.first-op {opacity: 50%;filter: blur(0.5px); -webkit-filter: blur(0.5px);}
+.second-op {opacity: 40%;filter: blur(1px); -webkit-filter: blur(1px);}
+
+/* --- 5. THE MODAL LOGIC (The Apple Pop-up) --- */
+
+/* Hide the checkbox */
+#modal-trigger { display: none; }
+
+/* The Black Overlay Background */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    z-index: 999;
+    
+    /* Hidden by default */
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s ease;
+    
+    /* Center the box */
+    display: flex; align-items: center; justify-content: center;
+}
+
+/* The Glass Box inside the overlay */
+.glass-modal {
+    width: 90%; max-width: 500px;
+    background: rgba(20, 20, 20, 0.2); /* Slightly darker for readability */
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+    border-radius: 30px;
+    padding: 30px;
+    
+    /* Animation State: Start slightly small and lower */
+    transform: scale(0.9) translateY(20px);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+}
+
+/* WHEN CHECKBOX IS CHECKED -> SHOW MODAL */
+#modal-trigger:checked ~ .modal-overlay {
+    opacity: 1; pointer-events: all;
+}
+#modal-trigger:checked ~ .modal-overlay .glass-modal {
+    transform: scale(1) translateY(0);
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute; top: 20px; right: 20px;
+    width: 30px; height: 30px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; font-size: 0.8rem;
+    transition: 0.2s;
+}
+.close-btn:hover { background: #FF3B30; color: white; }
+
+.modal-title { font-size: 1.5rem; margin-bottom: 5px; }
+.modal-subtitle { color: #888; font-size: 0.9rem; margin-bottom: 25px; }
+
+
+/* --- 6. EXPANDABLE LIST (ACCORDION) --- */
+.subject-list { display: flex; flex-direction: column; gap: 12px; }
+
+/* --- 7. SMOOTH ACCORDION (The Grid Trick) --- */
+
+/* 1. Hide the logic checkboxes */
+.accordion-trigger { display: none; }
+
+/* 2. The Container */
+.subject-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    overflow: hidden; /* Clips the content when sliding up */
+    transition: background 0.3s;
+}
+.subject-item:hover { background: rgba(255, 255, 255, 0.07); }
+
+/* 3. The Clickable Header (Label) */
+.subject-header {
+    padding: 18px 20px;
+    cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    font-weight: 600;
+    user-select: none; /* Prevents text highlighting on quick clicks */
+}
+
+/* Arrow Rotation Logic */
+.sub-arrow { transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); }
+
+/* When checkbox (trigger) is checked, rotate the arrow inside the sibling label */
+.accordion-trigger:checked + .subject-header .sub-arrow {
+    transform: rotate(180deg);
+    color: var(--accent);
+}
+
+/* 4. The Sliding Wrapper (The Magic Part) */
+.subject-content-wrapper {
+    display: grid;
+    grid-template-rows: 0fr; /* Start collapsed (0 height) */
+    transition: grid-template-rows 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); /* Apple-style curve */
+}
+
+/* When checked, expand to 1 fraction (full height) */
+.accordion-trigger:checked ~ .subject-content-wrapper {
+    grid-template-rows: 1fr;
+}
+
+/* 5. The Content Inside */
+.subject-inner {
+    overflow: hidden; /* Essential for the magic to work */
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* When open, fade content in */
+.accordion-trigger:checked ~ .subject-content-wrapper .subject-inner {
+    opacity: 1;
+    transform: translateY(0);
+    padding: 0 20px 20px 20px; /* Add padding only when open */
+}
+
+.drive-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+}
+.drive-link:hover { border-bottom-color: var(--accent); }

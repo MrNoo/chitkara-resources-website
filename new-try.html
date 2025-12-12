@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chitkara Resource Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="new.css">
+</head>
+<body>
+
+    <!-- 1. THE TRIGGER (Hidden Switch for the Modal) -->
+    <input type="checkbox" id="modal-trigger">
+
+    <!-- BACKGROUND ANIMATION -->
+    <div class="ambient-light">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+    </div>
+
+    <div class="container">
+        <nav class="nav-bar">
+            <div class="brand">
+                <div class="brand-mark"></div>
+                Chitkara Hub
+            </div>
+            <span class="badge-sem">CSE 2025</span>
+        </nav>
+
+        <header class="hero">
+            <h1>Resource <span class="hero-accent">Hub.</span></h1>
+            <p>Select your year to access the archives.</p>
+        </header>
+
+        <!-- THE MAIN GRID -->
+        <div class="grid">
+            
+            <!-- 2. THE CARD (Acts as a button for the Modal) -->
+            <!-- Note: label for="modal-trigger" connects this card to the checkbox above -->
+            <label for="modal-trigger" class="card glass-panel">
+                <div class="card-visual">
+                    <span class="card-badge">Folder</span>
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1">
+                        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                </div>
+                <div class="card-info">
+                    <h3 class="card-title">First Year Resources</h3>
+                    <div class="card-meta">
+                        <span>DECA, IWT,<span class="zero-op"> Py<span class="first-op">tho<span class="second-op">n...</span></span></span></span>
+                        <div class="arrow-icon">→</div>
+                    </div>
+                </div>
+            </label>
+
+            <!-- You can add 2nd/3rd year cards here later -->
+
+        </div>
+    </div>
+
+    <!-- 3. THE MODAL (The Popup Box) -->
+    <div class="modal-overlay">
+        <div class="glass-modal">
+            
+            <!-- Close Button (Unchecks the box) -->
+            <label for="modal-trigger" class="close-btn">✕</label>
+
+            <h2 class="modal-title">Select Subject</h2>
+            <p class="modal-subtitle">Tap to expand and get links.</p>
+
+            <div class="subject-list">
+                
+    <!-- SUBJECT 1: DECA -->
+    <div class="subject-item">
+        <!-- The Trigger (Hidden Checkbox) -->
+        <input type="checkbox" id="sub-1" class="accordion-trigger">
+        
+        <!-- The Header (Label acts as button) -->
+        <label for="sub-1" class="subject-header">
+            <span class="sub-name">DECA</span>
+            <span class="sub-arrow">↓</span>
+        </label>
+        
+        <!-- The Sliding Content -->
+        <div class="subject-content-wrapper">
+            <div class="subject-inner">
+                <p>Digital Electronics & Computer Architecture resources.</p>
+                <a href="#" class="drive-link">Open Drive Folder →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SUBJECT 2: IWT -->
+    <div class="subject-item">
+        <input type="checkbox" id="sub-2" class="accordion-trigger">
+        <label for="sub-2" class="subject-header">
+            <span class="sub-name">IWT</span>
+            <span class="sub-arrow">↓</span>
+        </label>
+        <div class="subject-content-wrapper">
+            <div class="subject-inner">
+                <p>Internet & Web Technology (HTML/CSS/JS).</p>
+                <a href="#" class="drive-link">Open Drive Folder →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SUBJECT 3: Python -->
+    <div class="subject-item">
+        <input type="checkbox" id="sub-3" class="accordion-trigger">
+        <label for="sub-3" class="subject-header">
+            <span class="sub-name">Python</span>
+            <span class="sub-arrow">↓</span>
+        </label>
+        <div class="subject-content-wrapper">
+            <div class="subject-inner">
+                <p>Python Programming notes and code.</p>
+                <a href="#" class="drive-link">Open Drive Folder →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SUBJECT 4: LAC -->
+    <div class="subject-item">
+        <input type="checkbox" id="sub-4" class="accordion-trigger">
+        <label for="sub-4" class="subject-header">
+            <span class="sub-name">LAC</span>
+            <span class="sub-arrow">↓</span>
+        </label>
+        <div class="subject-content-wrapper">
+            <div class="subject-inner">
+                <p>Linear Algebra & Calculus notes.</p>
+                <a href="https://drive.google.com/drive/folders/15ebGddCP0wFRiopMcEOkI1PeimWAfHXq"  class="drive-link">Open Drive Folder →</a>
+            </div>
+        </div>
+    </div>
+
+                <!-- SUBJECT 5: FCS -->
+    <div class="subject-item">
+        <input type="checkbox" id="sub-5" class="accordion-trigger">
+        <label for="sub-5" class="subject-header">
+            <span class="sub-name">FCS</span>
+            <span class="sub-arrow">↓</span>
+        </label>
+        <div class="subject-content-wrapper">
+            <div class="subject-inner">
+                <p>Foundation of computer science</p>
+                <a href="#" class="drive-link">Open Drive Folder →</a>
+            </div>
+        </div>
+    </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
